@@ -2,10 +2,10 @@
  * @Filename: example.js
  * @Author: jin
  * @Email: xiaoyanjinx@gmail.com
- * @Last Modified time: 2017-06-20 19:08:14
+ * @Last Modified time: 2017-06-21 11:00:21
  */
 
-import {Mvvm} from '../src/index.js'
+import {Maple} from '../src/index.js'
 
 window.data = {
   text1: {
@@ -17,7 +17,7 @@ window.data = {
   }
 }
 
-let app = new Mvvm({
+let app = new Maple({
   el: '#app',
   data: window.data,
   // render() {
@@ -38,9 +38,7 @@ let app = new Mvvm({
 })
 
 window.clickHandle = () => {
-  app.text1 = {
-    text2: {
-      text3: 'Hi!!!'
-    }
+  app.text1.text2 = {
+    text3: 'Hi!!!'
   }
 }
