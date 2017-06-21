@@ -1,0 +1,3 @@
+# Maple
+
+Pluggable Javascript Framework
