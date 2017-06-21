@@ -2,7 +2,7 @@
  * @Filename: observable.js
  * @Author: jin5354
  * @Email: xiaoyanjinx@gmail.com
- * @Last Modified time: 2017-06-16 15:02:35
+ * @Last Modified time: 2017-06-21 07:43:48
  */
 
 import {Dep} from './dep.js'
@@ -14,6 +14,10 @@ export class Observable {
     this.Observify(value)
   }
 
+  /**
+   * [Observify 将指定对象响应化]
+   * @param {[obj]} obj
+   */
   Observify(obj) {
     if(!isObject(obj)) {
       return
@@ -30,6 +34,10 @@ export class Observable {
     }
   }
 
+  /**
+   * [observifyArray 使数组响应化]
+   * @param  {[array]} arr
+   */
   observifyArray(arr) {
     const aryMethods = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse']
     let arrayAugmentations = Object.create(Array.prototype)
@@ -43,6 +51,12 @@ export class Observable {
     Object.setPrototypeOf(arr, arrayAugmentations)
   }
 
+  /**
+   * [defineReactive 将对象的某个 key 响应化]
+   * @param  {[obj]} obj
+   * @param  {[string]} key
+   * @param  {[any]} value
+   */
   defineReactive(obj, key, value) {
 
     let dep = new Dep()

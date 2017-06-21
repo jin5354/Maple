@@ -2,26 +2,45 @@
  * @Filename: example.js
  * @Author: jin
  * @Email: xiaoyanjinx@gmail.com
- * @Last Modified time: 2017-06-16 15:26:17
+ * @Last Modified time: 2017-06-20 19:08:14
  */
 
 import {Mvvm} from '../src/index.js'
 
+window.data = {
+  text1: {
+    text2: {
+      text3: 'Hello World!'
+    },
+    text4: 'This is text 4!',
+    text5: 'Test'
+  }
+}
+
 let app = new Mvvm({
   el: '#app',
-  data: {
-    text: 'Hello mvvm!'
-  },
-  render() {
-    return this.text
-  },
+  data: window.data,
+  // render() {
+  //   return this.text1.text2.text3
+  // },
+  template: `
+    <div>
+      <p>{{text1.text2.text3}}</p>
+      <p v-text="text1.text4"></p>
+      <input type="text" v-model="text1.text5" />
+    </div>
+  `,
   methods: {
     sayHi() {
-      this.text = 'Hi!!'
+      this.text1.text2.text3 = 'Hi!!'
     }
   }
 })
 
 window.clickHandle = () => {
-  app.$data.text = 'Hi!!'
+  app.text1 = {
+    text2: {
+      text3: 'Hi!!!'
+    }
+  }
 }
